@@ -35,12 +35,13 @@ def startTimer():
     countdown(minutes, seconds)
 
 # pause button
-global paused
 paused = False
 def pauseTimer():
-    print("Pause button clicked")
-    global paused 
+    global paused
     paused = not paused
+    pauseBtn.config(text="Continue" if paused else "Pause")
+    if not paused:
+        startTimer()
 
 pauseBtn = timer.tk.Button(frame, text="Pause", command=pauseTimer)
 pauseBtn.grid(row=3, column=1, padx=5, pady=5)
@@ -49,6 +50,7 @@ pauseBtn.config(bg="pink", fg="black", font=("lexend mega", 12), width=10)
 def countdown(minutes, seconds):
     if(minutes == 0 and seconds == 0):
         entryVar.set("Done!!!")
+        entryWidget.config(bg="lightgreen")
         return
     if not paused:
         entryVar.set(f"{minutes:02d}:{seconds:02d}") 
