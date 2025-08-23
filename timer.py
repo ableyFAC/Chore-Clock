@@ -3,6 +3,7 @@ import time as time
 import tkinter as tk
 
 washingMachine = 120 # 2 hours 
+dryer = 85 
 
 def calculateTime(minutes, seconds):
     if(int(seconds) <= 0):
